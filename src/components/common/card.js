@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const StyledCard = styled(Link)`
   background-color: red;
   text-decoration: none;
+  width: min-content;
 
   > img {
     height: 190px;

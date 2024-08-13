@@ -6,7 +6,7 @@ export const AppProvider = ({ children }) => {
   const [characters, setCharacters] = useState([]);
   const [characterList, setCharacterList] = useState([]);
   const [character, setCharacter] = useState(null);
-  const [comicDetail, setComicDetail] = useState(null);
+  const [comicDetails, setComicDetails] = useState(null);
 
   return (
     <AppContext.Provider
@@ -17,8 +17,8 @@ export const AppProvider = ({ children }) => {
         setCharacters,
         character,
         setCharacter,
-        comicDetail,
-        setComicDetail,
+        comicDetails,
+        setComicDetails,
       }}
     >
       {children}

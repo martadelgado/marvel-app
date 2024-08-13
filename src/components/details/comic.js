@@ -4,14 +4,26 @@ import useFetch from '../../hooks/useFetch';
 import { AppContext } from '../../context/AppContext';
 
 const StyledComic = styled.div`
-  > img {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+
+  img {
     height: 270px;
     width: 180px;
   }
+
+  div {
+    width: 180px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
-const Comic = ({ comic, id }) => {
-  const { comicDetail, setComicDetail } = useContext(AppContext);
+const Comic = ({ id }) => {
+  const { comicDetails, setComicDetails } = useContext(AppContext);
 
   const comicListMapper = useCallback((results) => {
     return results.map((result) => ({
@@ -21,18 +33,23 @@ const Comic = ({ comic, id }) => {
   }, []);
 
   const url = `public/characters/${id}/comics`;
+  const query = '&orderBy=onsaleDate&limit=5';
 
-  const { loading } = useFetch(url, comicListMapper, setComicDetail);
+  const { loading } = useFetch(url, comicListMapper, setComicDetails, query);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    comicDetail && (
+    comicDetails && (
       <StyledComic>
-        <img src={comicDetail[0].img} />
-        <div>{comicDetail[0].name} </div>
+        {comicDetails?.map((comicDetail, i) => (
+          <div key={i}>
+            <img src={comicDetail.img} />
+            <div>{comicDetail.name} </div>
+          </div>
+        ))}
       </StyledComic>
     )
   );

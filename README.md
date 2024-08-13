@@ -1,6 +1,6 @@
 # Welcome to My Marvelous Marvel App
 
-A simple React application configured with Webpack for development and production builds.
+A simple React application configured with Webpack for development and production builds. The application has two views -- a character list view which fetches the list of Marvel characters and a detail view which provides additional details on the character based on ID.
 
 ## Features
 

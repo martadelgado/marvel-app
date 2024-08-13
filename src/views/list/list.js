@@ -32,7 +32,6 @@ const StyledContainer = styled.div`
 const List = () => {
   const { characters, characterList, setCharacterList } =
     useContext(AppContext);
-  const [initialCharacters, setInitialCharacter] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const characterListMapper = useCallback((results) => {
     return results.map((result) => ({
@@ -42,7 +41,7 @@ const List = () => {
     }));
   }, []);
   const url = 'public/characters';
-  const query = '&limit=2';
+  const query = '&limit=20';
   const { loading } = useFetch(
     url,
     characterListMapper,
